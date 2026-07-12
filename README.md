@@ -2,8 +2,6 @@
 Odoo Hackathon Project 2026-Enterprise Asset and Resource Management System
 Assetflow Enterprise Asset and Resource Management System
 
-Prepared by : Viishwa dave & Devanshi Panchal
-
 ## Features
 
 ### Authentication
