@@ -2,6 +2,11 @@
 Odoo Hackathon Project 2026-Enterprise Asset and Resource Management System
 Assetflow Enterprise Asset and Resource Management System
 
+# Problem Statement
+AssetFlow is an Enterprise Asset and Resource Management System built on the Odoo ERP platform to simplify the way organizations manage their physical assets and shared resources. The system provides a centralized solution for tracking, allocating, maintaining, and monitoring assets such as equipment, furniture, vehicles, and shared spaces throughout their lifecycle. It is designed to serve organizations across various sectors, including businesses, educational institutions, hospitals, factories, and government agencies. By replacing manual processes such as spreadsheets and paper records, AssetFlow improves operational efficiency, reduces errors, and provides real-time visibility into asset availability, ownership, and condition. The platform also supports role-based access, structured workflows, and scalable module design, ensuring secure and organized asset management while remaining focused on core ERP functionality without including purchasing, invoicing, or accounting features.
+
+In today's fast-paced and technology-driven environment, organizations depend heavily on physical assets and shared resources to carry out their daily operations efficiently. These assets include equipment, computers, furniture, machinery, vehicles, meeting rooms, and other valuable resources that require proper tracking, allocation, maintenance, and monitoring throughout their lifecycle. Many organizations still rely on manual methods such as spreadsheets, paper records, or disconnected software systems to manage these assets. Such approaches often result in inaccurate records, duplicate allocations, poor maintenance scheduling, lack of accountability, and reduced operational efficiency. As organizations grow, these challenges become increasingly difficult to manage, highlighting the need for a centralized and automated asset management solution.
+
 ## Features
 
 ### Authentication
