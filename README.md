@@ -67,6 +67,14 @@ Assetflow Enterprise Asset and Resource Management System
 - Transfer Alerts
 - Maintenance Updates
 - Audit Notifications
+  
+## Future Enhancements
+
+- QR Code Integration
+- Email Notifications
+- Barcode Scanner
+- Mobile Support
+- Advanced Reporting
 
 ## Technology Stack
 - PHP
