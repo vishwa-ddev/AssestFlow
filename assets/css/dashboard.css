@@ -1,0 +1,585 @@
+/**
+ * AssetFlow - Admin Dashboard Styles
+ * Modern layout with sidebar, KPI cards, and activity timeline.
+ */
+
+/* --------------------------------------------------------------------------
+   CSS Variables
+   -------------------------------------------------------------------------- */
+:root {
+    --af-primary:        #2563eb;
+    --af-primary-dark:   #1d4ed8;
+    --af-primary-light:  #3b82f6;
+    --af-bg:             #f8fafc;
+    --af-white:          #ffffff;
+    --af-text:           #1e293b;
+    --af-text-muted:     #64748b;
+    --af-border:         #e2e8f0;
+    --af-sidebar-width:  260px;
+    --af-topbar-height:  64px;
+    --af-radius:         12px;
+    --af-radius-lg:      16px;
+    --af-shadow:         0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+    --af-shadow-hover:   0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 24px rgba(0, 0, 0, 0.08);
+    --af-transition:     0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--af-text);
+    background-color: var(--af-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard Layout
+   -------------------------------------------------------------------------- */
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: var(--af-sidebar-width);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left var(--af-transition);
+}
+
+.page-content {
+    flex: 1;
+    padding: 1.75rem 2rem 2.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar
+   -------------------------------------------------------------------------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--af-sidebar-width);
+    height: 100vh;
+    background-color: var(--af-white);
+    border-right: 1px solid var(--af-border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1040;
+    transition: transform var(--af-transition);
+}
+
+.sidebar-brand {
+    padding: 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--af-border);
+}
+
+.sidebar-brand-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--af-text);
+}
+
+.sidebar-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--af-primary-light), var(--af-primary));
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sidebar-brand-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--af-text);
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 1rem 0.75rem;
+    overflow-y: auto;
+}
+
+.sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 1rem;
+    border-radius: 8px;
+    color: var(--af-text-muted);
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all var(--af-transition);
+    margin-bottom: 2px;
+}
+
+.sidebar-nav .nav-link i {
+    font-size: 1.125rem;
+    width: 1.25rem;
+    text-align: center;
+}
+
+.sidebar-nav .nav-link:hover {
+    background-color: #f1f5f9;
+    color: var(--af-primary);
+}
+
+.sidebar-nav .nav-link.active {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--af-primary);
+    font-weight: 600;
+}
+
+.sidebar-footer {
+    padding: 1rem 0.75rem;
+    border-top: 1px solid var(--af-border);
+}
+
+.sidebar-logout {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 1rem;
+    border-radius: 8px;
+    color: var(--af-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--af-transition);
+}
+
+.sidebar-logout:hover {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+/* Sidebar overlay (mobile) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.4);
+    z-index: 1035;
+    opacity: 0;
+    transition: opacity var(--af-transition);
+}
+
+.sidebar-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Top Bar
+   -------------------------------------------------------------------------- */
+.topbar {
+    height: var(--af-topbar-height);
+    background-color: var(--af-white);
+    border-bottom: 1px solid var(--af-border);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.sidebar-toggle {
+    display: none;
+    color: var(--af-text);
+    font-size: 1.5rem;
+    padding: 0.25rem;
+    border: none;
+    text-decoration: none;
+}
+
+.sidebar-toggle:hover,
+.sidebar-toggle:focus {
+    color: var(--af-primary);
+}
+
+.topbar-title {
+    flex: 1;
+}
+
+.page-heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--af-text);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.topbar-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--af-border);
+    color: var(--af-text-muted);
+    transition: all var(--af-transition);
+}
+
+.topbar-icon-btn:hover {
+    background-color: #f1f5f9;
+    color: var(--af-primary);
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.375rem 0.75rem 0.375rem 0.375rem;
+    border-radius: 10px;
+    border: 1px solid var(--af-border);
+    background-color: var(--af-white);
+}
+
+.topbar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--af-primary-light), var(--af-primary));
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbar-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+.topbar-user-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--af-text);
+}
+
+.topbar-user-role {
+    font-size: 0.75rem;
+    color: var(--af-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   KPI Cards
+   -------------------------------------------------------------------------- */
+.kpi-card {
+    background-color: var(--af-white);
+    border-radius: var(--af-radius-lg);
+    box-shadow: var(--af-shadow);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: transform var(--af-transition), box-shadow var(--af-transition);
+    border: 1px solid transparent;
+    height: 100%;
+}
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--af-shadow-hover);
+    border-color: var(--af-border);
+}
+
+.kpi-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.kpi-icon i {
+    font-size: 1.5rem;
+}
+
+.kpi-icon-primary { background-color: rgba(37, 99, 235, 0.1);  color: var(--af-primary); }
+.kpi-icon-info    { background-color: rgba(14, 165, 233, 0.1);  color: #0ea5e9; }
+.kpi-icon-warning { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.kpi-icon-success { background-color: rgba(34, 197, 94, 0.1);   color: #22c55e; }
+.kpi-icon-secondary { background-color: rgba(100, 116, 139, 0.1); color: #64748b; }
+.kpi-icon-danger  { background-color: rgba(239, 68, 68, 0.1);   color: #ef4444; }
+
+.kpi-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.kpi-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--af-text);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.kpi-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--af-text-muted);
+    margin-top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Alert Banner
+   -------------------------------------------------------------------------- */
+.alert-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--af-radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+.alert-banner-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #fee2e2;
+    color: #dc2626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.alert-banner-icon i {
+    font-size: 1.125rem;
+}
+
+.alert-banner-text {
+    font-size: 0.9375rem;
+    color: #991b1b;
+}
+
+.alert-banner-text strong {
+    font-weight: 600;
+}
+
+.alert-banner-text span {
+    color: #b91c1c;
+}
+
+/* --------------------------------------------------------------------------
+   Action Buttons
+   -------------------------------------------------------------------------- */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-action {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.875rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: var(--af-radius);
+    border: none;
+    background-color: var(--af-primary);
+    transition: all var(--af-transition);
+}
+
+.btn-action:hover {
+    background-color: var(--af-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   Recent Activity Timeline
+   -------------------------------------------------------------------------- */
+.activity-section {
+    background-color: var(--af-white);
+    border-radius: var(--af-radius-lg);
+    box-shadow: var(--af-shadow);
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--af-border);
+}
+
+.activity-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--af-border);
+}
+
+.activity-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--af-text);
+    margin: 0;
+}
+
+.activity-view-all {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--af-primary);
+    text-decoration: none;
+    transition: color var(--af-transition);
+}
+
+.activity-view-all:hover {
+    color: var(--af-primary-dark);
+    text-decoration: underline;
+}
+
+.activity-timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-item {
+    display: flex;
+    gap: 1rem;
+}
+
+.activity-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 40px;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--af-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.activity-icon i {
+    font-size: 1rem;
+}
+
+.activity-line {
+    width: 2px;
+    flex: 1;
+    min-height: 24px;
+    background-color: var(--af-border);
+    margin: 4px 0;
+}
+
+.activity-content {
+    flex: 1;
+    padding-bottom: 1.5rem;
+}
+
+.activity-item:last-child .activity-content {
+    padding-bottom: 0;
+}
+
+.activity-message {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--af-text);
+    margin: 0 0 0.25rem;
+    padding-top: 0.5rem;
+}
+
+.activity-time {
+    font-size: 0.75rem;
+    color: var(--af-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Mobile Sidebar Collapse
+   -------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page-content {
+        padding: 1.25rem 1rem 2rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn-action {
+        min-width: 100%;
+    }
+
+    .kpi-card {
+        padding: 1.25rem;
+    }
+
+    .kpi-value {
+        font-size: 1.5rem;
+    }
+
+    .page-heading {
+        font-size: 1.125rem;
+    }
+}
